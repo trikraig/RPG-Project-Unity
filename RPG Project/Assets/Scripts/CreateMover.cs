@@ -5,15 +5,8 @@ using UnityEngine.AI;
 
 public class CreateMover : MonoBehaviour
 {
-    // Start is called before the first frame update
 
-    [SerializeField]
-    Transform target;
-
-    void Start()
-    {
-        
-    }
+    [SerializeField] Transform target;
 
     // Update is called once per frame
     void Update()
