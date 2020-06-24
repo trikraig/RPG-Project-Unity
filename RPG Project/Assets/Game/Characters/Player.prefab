@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4664692157138190085}
   - component: {fileID: 6961585754894509021}
+  - component: {fileID: 720550052080044501}
   - component: {fileID: 5997113323775262978}
   - component: {fileID: 5997113323775262979}
   - component: {fileID: 5997113323775262980}
@@ -72,6 +73,18 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &720550052080044501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5997113323775262977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00566b7142cc68744afd74e645ebc037, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5997113323775262978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,7 +193,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9572094, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
 --- !u!4 &8159125518500029293 stripped
 Transform:
