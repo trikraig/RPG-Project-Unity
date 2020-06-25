@@ -24,7 +24,7 @@ namespace RPG.Control
 
                 if (Input.GetMouseButtonDown(0))
                 {
-                    GetComponent<Fighter>().Attack(target);
+                    GetComponent<Fighter>().StartAttackAction(target);
                 }
                 //Even if hovering - cursor affordance - hint to user what can be done
                 return true;
