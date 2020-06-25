@@ -1,7 +1,6 @@
-﻿using UnityEngine;
+﻿using RPG.Combat;
 using RPG.Movement;
-using System;
-using RPG.Combat;
+using UnityEngine;
 
 namespace RPG.Control
 {
@@ -9,11 +8,12 @@ namespace RPG.Control
     {
         void Update()
         {
-            InteractWithCombat();
-            InteractWithMovement();
+            if (InteractWithCombat()) return;
+            if (InteractWithMovement()) return;
+            print("Nothing to do");
         }
 
-        private void InteractWithCombat()
+        private bool InteractWithCombat()
         {
 
             RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
@@ -26,26 +26,29 @@ namespace RPG.Control
                 {
                     GetComponent<Fighter>().Attack(target);
                 }
+                //Even if hovering - cursor affordance - hint to user what can be done
+                return true;
             }
+            //No targets to interact with
+            return false;
         }
 
-        private void InteractWithMovement()
-        {
-            if (Input.GetMouseButton(0))
-            {
-                MoveToCursor();
-            }
-        }
-
-        private void MoveToCursor()
+        private bool InteractWithMovement()
         {
             Ray ray = GetMouseRay();
             bool hasHit = Physics.Raycast(ray, out RaycastHit hit);
             if (hasHit)
             {
-                GetComponent<Mover>().MoveTo(hit.point);
+                if (Input.GetMouseButton(0))
+                {
+                    GetComponent<Mover>().StartMoveAction(hit.point);
+                }
+                //Even if hovering - cursor affordance - hint to user what can be done
+                return true;
             }
+            return false;
         }
+
 
         private static Ray GetMouseRay()
         {
