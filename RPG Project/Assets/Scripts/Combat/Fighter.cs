@@ -19,10 +19,13 @@ namespace RPG.Combat
         private void Update()
         {
             timeSinceLastAttack += Time.deltaTime;
-
+            //No Target
             if (target == null) return;
-            if (target.GetIsDead()) return;
-            if (!GetIsInRange())
+            //Target is Dead
+            if (target.IsDead()) return;
+            //Engage Target
+
+            if (!GetIsCurrentTargetInRange())
             {
                 GetComponent<Mover>().MoveTo(target.transform.position);
             }
@@ -31,25 +34,40 @@ namespace RPG.Combat
                 if (timeSinceLastAttack > timeBetweenAttacks)
                 {
                     GetComponent<Mover>().Cancel();
-                    AttackBehaviour();              
-                }           
+                    AttackBehaviour();
+                }
             }
-
         }
 
-        //Animation Event
         private void AttackBehaviour()
         {
-            GetComponent<Animator>().SetTrigger("attack");
+            transform.LookAt(target.transform);
+            TriggerAttackAnimation();
             timeSinceLastAttack = 0;
         }
 
+        private void TriggerAttackAnimation()
+        {
+            GetComponent<Animator>().ResetTrigger("stopAttack");
+            GetComponent<Animator>().SetTrigger("attack");
+        }
+
+        //Animation Event
         void Hit()
         {
+            if (target == null) { return; }
             target.TakeDamage(weaponDamage);
         }
 
-        public void StartAttackAction(CombatTarget combatTarget)
+
+        public bool CanAttack(CombatTarget combatTarget)
+        {
+            if (combatTarget == null) { return false; }
+            Health targetHealth = combatTarget.GetComponent<Health>();
+            return targetHealth != null && !targetHealth.IsDead();
+        }
+
+        public void Attack(CombatTarget combatTarget)
         {
             GetComponent<ActionScheduler>().StartAction(this);
             target = combatTarget.GetComponent<Health>();
@@ -57,12 +75,17 @@ namespace RPG.Combat
 
         public void Cancel()
         {
-            print("Fighter Cancelled");
             target = null;
-            GetComponent<Animator>().SetTrigger("stopAttack");
+            StopAttackAnimation();
         }
 
-        private bool GetIsInRange()
+        private void StopAttackAnimation()
+        {
+            GetComponent<Animator>().SetTrigger("stopAttack");
+            GetComponent<Animator>().ResetTrigger("attack");
+        }
+
+        private bool GetIsCurrentTargetInRange()
         {
             return Vector3.Distance(transform.position, target.transform.position) < weaponRange;
         }
