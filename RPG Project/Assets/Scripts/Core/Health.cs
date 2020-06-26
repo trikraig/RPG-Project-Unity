@@ -1,19 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace RPG.Combat
+namespace RPG.Core
 {
     public class Health : MonoBehaviour
     {
         [SerializeField] float healthPoints = 100f;
         bool isDead = false;
 
-        public bool IsDead()
-        {
-            return isDead;
-        }
-        
+        public bool IsDead() => isDead;
+
         public void TakeDamage(float damage)
         {
             print("take damage");
@@ -29,9 +24,9 @@ namespace RPG.Combat
         {
             if (!isDead)
             {
-                print("is dead");
-                GetComponent<Animator>().SetTrigger("die");
                 isDead = true;
+                GetComponent<Animator>().SetTrigger("die");
+                GetComponent<ActionScheduler>().CancelCurrentAction();
             }
         }
     }

@@ -1,5 +1,4 @@
 ﻿using RPG.Core;
-using System.Numerics;
 using UnityEngine;
 using UnityEngine.AI;
 using Vector3 = UnityEngine.Vector3;
@@ -9,12 +8,15 @@ namespace RPG.Movement
     public class Mover : MonoBehaviour, IAction
     {
         NavMeshAgent navMeshAgent;
+        Health health;
         private void Start()
         {
+            health = GetComponent<Health>();
             navMeshAgent = GetComponent<NavMeshAgent>();
         }
         void Update()
         {
+            navMeshAgent.enabled = !health.IsDead(); 
             UpdateAnimator();
         }
 
