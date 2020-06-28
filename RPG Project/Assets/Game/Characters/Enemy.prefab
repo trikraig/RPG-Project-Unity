@@ -58,17 +58,17 @@ PrefabInstance:
     - target: {fileID: 4664692157138190085, guid: 45691dd60f7cd364e8eef6d74e35eb01,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.901
+      value: 23.667349
       objectReference: {fileID: 0}
     - target: {fileID: 4664692157138190085, guid: 45691dd60f7cd364e8eef6d74e35eb01,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0000009536743
+      value: -6.6336994
       objectReference: {fileID: 0}
     - target: {fileID: 4664692157138190085, guid: 45691dd60f7cd364e8eef6d74e35eb01,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.135905
+      value: -49.315277
       objectReference: {fileID: 0}
     - target: {fileID: 4664692157138190085, guid: 45691dd60f7cd364e8eef6d74e35eb01,
         type: 3}
@@ -78,7 +78,7 @@ PrefabInstance:
     - target: {fileID: 4664692157138190085, guid: 45691dd60f7cd364e8eef6d74e35eb01,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.98136187
+      value: -0.45515132
       objectReference: {fileID: 0}
     - target: {fileID: 4664692157138190085, guid: 45691dd60f7cd364e8eef6d74e35eb01,
         type: 3}
@@ -88,7 +88,7 @@ PrefabInstance:
     - target: {fileID: 4664692157138190085, guid: 45691dd60f7cd364e8eef6d74e35eb01,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.192169
+      value: -0.8904142
       objectReference: {fileID: 0}
     - target: {fileID: 4664692157138190085, guid: 45691dd60f7cd364e8eef6d74e35eb01,
         type: 3}
@@ -103,17 +103,22 @@ PrefabInstance:
     - target: {fileID: 4664692157138190085, guid: 45691dd60f7cd364e8eef6d74e35eb01,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -202.159
+      value: -305.851
       objectReference: {fileID: 0}
     - target: {fileID: 4664692157138190085, guid: 45691dd60f7cd364e8eef6d74e35eb01,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8297332059265976322, guid: 45691dd60f7cd364e8eef6d74e35eb01,
+        type: 3}
+      propertyPath: weaponDamage
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8636782698702593542, guid: 45691dd60f7cd364e8eef6d74e35eb01,
         type: 3}
       propertyPath: healthPoints
-      value: 20
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5997113323775262979, guid: 45691dd60f7cd364e8eef6d74e35eb01,
         type: 3}
