@@ -10,8 +10,16 @@ namespace RPG.Combat
         [SerializeField] float weaponRange = 2f;
         [SerializeField] float timeBetweenAttacks = 1f;
         [SerializeField] float weaponDamage = 5f;
-        private Health target = null;
-        private float timeSinceLastAttack = Mathf.Infinity;
+        Health target = null;
+        Mover mover;
+        Animator animator;
+        float timeSinceLastAttack = Mathf.Infinity;
+
+        private void Start()
+        {
+            mover = GetComponent<Mover>();
+            animator = GetComponent<Animator>();
+        }
         private void Update()
         {
             timeSinceLastAttack += Time.deltaTime;
@@ -23,13 +31,13 @@ namespace RPG.Combat
 
             if (!GetIsCurrentTargetInRange())
             {
-                GetComponent<Mover>().MoveTo(target.transform.position, 1f);
+                mover.MoveTo(target.transform.position, 1f);
             }
             else
             {
                 if (timeSinceLastAttack > timeBetweenAttacks)
                 {
-                    GetComponent<Mover>().Cancel();
+                    mover.Cancel();
                     AttackBehaviour();
                 }
             }
@@ -44,8 +52,8 @@ namespace RPG.Combat
 
         private void TriggerAttackAnimation()
         {
-            GetComponent<Animator>().ResetTrigger("stopAttack");
-            GetComponent<Animator>().SetTrigger("attack");
+            animator.ResetTrigger("stopAttack");
+            animator.SetTrigger("attack");
         }
 
         //Animation Event
@@ -72,13 +80,14 @@ namespace RPG.Combat
         public void Cancel()
         {
             target = null;
+            mover.Cancel();
             StopAttackAnimation();
         }
 
         private void StopAttackAnimation()
         {
-            GetComponent<Animator>().SetTrigger("stopAttack");
-            GetComponent<Animator>().ResetTrigger("attack");
+            animator.SetTrigger("stopAttack");
+            animator.ResetTrigger("attack");
         }
 
         private bool GetIsCurrentTargetInRange()
