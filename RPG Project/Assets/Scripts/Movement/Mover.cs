@@ -19,7 +19,7 @@ namespace RPG.Movement
         }
         void Update()
         {
-            navMeshAgent.enabled = !health.IsDead(); 
+            navMeshAgent.enabled = !health.IsDead();
             UpdateAnimator();
         }
 
@@ -32,14 +32,11 @@ namespace RPG.Movement
         public void MoveTo(Vector3 destination, float speedFraction)
         {
             navMeshAgent.SetDestination(destination);
-            navMeshAgent.speed = maxSpeed * Mathf.Clamp01(speedFraction); 
-            navMeshAgent.isStopped = false;         
+            navMeshAgent.speed = maxSpeed * Mathf.Clamp01(speedFraction);
+            navMeshAgent.isStopped = false;
         }
 
-        public void Cancel()
-        {
-            navMeshAgent.isStopped = true;
-        }
+        public void Cancel() => navMeshAgent.isStopped = true;
 
         private void UpdateAnimator()
         {
@@ -56,7 +53,7 @@ namespace RPG.Movement
 
         public void RestoreState(object state)
         {
-            SerializableVector3 position = (SerializableVector3) state;
+            SerializableVector3 position = (SerializableVector3)state;
             navMeshAgent.enabled = false;
             transform.position = position.ToVector();
             navMeshAgent.enabled = true;
