@@ -24,9 +24,9 @@ namespace RPG.SceneManagement
             }
         }
 
-        private void Load() => ss.Load(defaultSaveFile);
+        public void Load() => ss.Load(defaultSaveFile);
 
-        private void Save() => ss.Save(defaultSaveFile);
+        public void Save() => ss.Save(defaultSaveFile);
     }
 
 }

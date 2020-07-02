@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Experimental.UIElements.StyleEnums;
 using UnityEngine.SceneManagement;
 
 namespace RPG.SceneManagement
@@ -40,7 +41,16 @@ namespace RPG.SceneManagement
             Fader fader = FindObjectOfType<Fader>();
 
             yield return fader.FadeOut(fadeOutTime);
+
+            //Save current level
+
+           SavingWrapper wrapper = FindObjectOfType<SavingWrapper>();
+           wrapper.Save();
+
             yield return SceneManager.LoadSceneAsync(sceneToLoad);
+
+            //Load current level
+           wrapper.Load();
 
             Portal otherPortal = GetOtherPortal();
             UpdatePlayer(otherPortal);
