@@ -23,7 +23,7 @@ namespace RPG.SceneManagement
             }
         }
 
-      public  IEnumerator FadeIn(float time)
+        public IEnumerator FadeIn(float time)
         {
             while (canvasGroup.alpha > 0)
             {
@@ -31,6 +31,11 @@ namespace RPG.SceneManagement
                 //runs on next frame
                 yield return null;
             }
+        }
+
+        public void FadeOutImmediate()
+        {
+            canvasGroup.alpha = 1;
         }
     }
 }
