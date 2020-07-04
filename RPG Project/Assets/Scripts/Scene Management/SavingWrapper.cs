@@ -8,7 +8,6 @@ namespace RPG.SceneManagement
     {
         [SerializeField] float fadeInTime = 0.5f;
         const string defaultSaveFile = "save";
-        SavingSystem ss;
 
         IEnumerator Start()
         {
