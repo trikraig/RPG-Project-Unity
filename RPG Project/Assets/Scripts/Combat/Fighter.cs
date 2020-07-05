@@ -1,6 +1,5 @@
 ﻿using RPG.Core;
 using RPG.Movement;
-using System;
 using UnityEngine;
 
 namespace RPG.Combat
@@ -8,11 +7,12 @@ namespace RPG.Combat
 
     public class Fighter : MonoBehaviour, IAction
     {
-        
+
         [SerializeField] float timeBetweenAttacks = 1f;
         [SerializeField] Transform handTransform = null;
-        [SerializeField] Weapon weapon = null;
-        
+        [SerializeField] Weapon defaultWeapon = null;
+        Weapon currentWeapon = null;
+
         Health target;
         Mover mover;
         Animator animator;
@@ -23,7 +23,7 @@ namespace RPG.Combat
             mover = GetComponent<Mover>();
             animator = GetComponent<Animator>();
 
-            SpawnWeapon();
+            EquipWeapon(defaultWeapon);
         }
 
         private void Update()
@@ -49,13 +49,14 @@ namespace RPG.Combat
             }
         }
 
-        private void SpawnWeapon()
+        public void EquipWeapon(Weapon weapon)
         {
             if (weapon == null || handTransform == null)
             {
                 return;
             }
             weapon.Spawn(handTransform, animator);
+            currentWeapon = weapon;
 
         }
 
@@ -76,7 +77,7 @@ namespace RPG.Combat
         void Hit()
         {
             if (target == null) { return; }
-            target.TakeDamage(weapon.GetDamage());
+            target.TakeDamage(currentWeapon.GetDamage());
         }
 
 
@@ -108,10 +109,10 @@ namespace RPG.Combat
 
         private bool GetIsCurrentTargetInRange()
         {
-            return Vector3.Distance(transform.position, target.transform.position) < weapon.GetRange();
+            return Vector3.Distance(transform.position, target.transform.position) < currentWeapon.GetRange();
         }
 
-        
+
     }
 }
 
