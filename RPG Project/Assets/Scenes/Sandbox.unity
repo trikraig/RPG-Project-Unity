@@ -15841,6 +15841,9 @@ MonoBehaviour:
   weaponRange: 2
   timeBetweenAttacks: 1
   weaponDamage: 10
+  weaponPrefab: {fileID: 0}
+  handTransform: {fileID: 0}
+  weaponOverride: {fileID: 0}
 --- !u!114 &6600074217380138545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15856,6 +15859,9 @@ MonoBehaviour:
   weaponRange: 2
   timeBetweenAttacks: 1
   weaponDamage: 10
+  weaponPrefab: {fileID: 0}
+  handTransform: {fileID: 0}
+  weaponOverride: {fileID: 0}
 --- !u!114 &6600074217540809750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15871,6 +15877,9 @@ MonoBehaviour:
   weaponRange: 2
   timeBetweenAttacks: 1
   weaponDamage: 10
+  weaponPrefab: {fileID: 0}
+  handTransform: {fileID: 0}
+  weaponOverride: {fileID: 0}
 --- !u!114 &6600074217834550461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15886,6 +15895,9 @@ MonoBehaviour:
   weaponRange: 2
   timeBetweenAttacks: 1
   weaponDamage: 10
+  weaponPrefab: {fileID: 0}
+  handTransform: {fileID: 0}
+  weaponOverride: {fileID: 0}
 --- !u!114 &6600074218161303717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15901,6 +15913,9 @@ MonoBehaviour:
   weaponRange: 2
   timeBetweenAttacks: 1
   weaponDamage: 10
+  weaponPrefab: {fileID: 0}
+  handTransform: {fileID: 0}
+  weaponOverride: {fileID: 0}
 --- !u!114 &6873094571968029202
 MonoBehaviour:
   m_ObjectHideFlags: 0
