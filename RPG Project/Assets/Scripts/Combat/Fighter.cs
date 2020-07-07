@@ -9,7 +9,8 @@ namespace RPG.Combat
     {
 
         [SerializeField] float timeBetweenAttacks = 1f;
-        [SerializeField] Transform handTransform = null;
+        [SerializeField] Transform rightHandTransform = null;
+        [SerializeField] Transform leftHandTransform = null;
         [SerializeField] Weapon defaultWeapon = null;
         Weapon currentWeapon = null;
 
@@ -51,11 +52,8 @@ namespace RPG.Combat
 
         public void EquipWeapon(Weapon weapon)
         {
-            if (weapon == null || handTransform == null)
-            {
-                return;
-            }
-            weapon.Spawn(handTransform, animator);
+            if (weapon == null || rightHandTransform == null || leftHandTransform == null) { return; }
+            weapon.Spawn(rightHandTransform, leftHandTransform, animator);
             currentWeapon = weapon;
 
         }
