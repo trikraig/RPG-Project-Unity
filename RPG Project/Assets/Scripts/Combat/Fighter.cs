@@ -74,10 +74,21 @@ namespace RPG.Combat
         //Animation Event
         void Hit()
         {
-            if (target == null) { return; }
-            target.TakeDamage(currentWeapon.GetDamage());
+            if (!target) { return; }
+            if (currentWeapon.HasProjectile())
+            {
+                currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target);
+            }
+            else
+            {
+                target.TakeDamage(currentWeapon.GetDamage());
+            }
         }
-
+        //Animation Event
+        void Shoot()
+        {
+            Hit();
+        }
 
         public bool CanAttack(GameObject combatTarget)
         {
