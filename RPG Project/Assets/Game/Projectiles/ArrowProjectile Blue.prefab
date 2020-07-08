@@ -12,6 +12,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: ArrowProjectile Blue
       objectReference: {fileID: 0}
+    - target: {fileID: 4411611042063953300, guid: 6f7c4dd44ffca494b96472f7f3c1a41a,
+        type: 3}
+      propertyPath: hitEffect
+      value: 
+      objectReference: {fileID: 4366399598901566597, guid: 2a50c7c7f962a164f86c4f0f016bb459,
+        type: 3}
     - target: {fileID: 5120867783983985700, guid: 6f7c4dd44ffca494b96472f7f3c1a41a,
         type: 3}
       propertyPath: m_LocalPosition.x
