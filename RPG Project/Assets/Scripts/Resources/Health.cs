@@ -8,23 +8,31 @@ namespace RPG.Resources
     public class Health : MonoBehaviour, ISaveable
     {
         [SerializeField] float healthPoints = 100f;
+        float maxHealth;
         bool isDead = false;
 
         private void Start()
         {
             //TODO FIX
-            healthPoints = GetComponent<BaseStats>().GetHealth();
+            maxHealth = GetComponent<BaseStats>().GetHealth();
+            healthPoints = maxHealth;
         }
 
         public bool IsDead() => isDead;
-     
+
         public void TakeDamage(float damage)
-        {  
+        {
             healthPoints = Mathf.Max(healthPoints - damage, 0);
             if (healthPoints == 0)
             {
                 Die();
             }
+
+        }
+
+        public float GetPercentage()
+        {
+            return healthPoints / maxHealth * 100;
         }
 
         private void Die()
