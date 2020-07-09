@@ -1,7 +1,4 @@
 ﻿using RPG.Core;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -26,13 +23,20 @@ namespace RPG.Combat
             if (equippedPrefab != null)
             {
                 Transform handTransform = GetTransform(rightHand, leftHand);
-                GameObject weapon =  Instantiate(equippedPrefab, handTransform);
+                GameObject weapon = Instantiate(equippedPrefab, handTransform);
                 weapon.name = weaponName;
             }
+            var overrideController = animator.runtimeAnimatorController as AnimatorOverrideController;
             if (animatorOverride != null)
             {
                 animator.runtimeAnimatorController = animatorOverride;
             }
+
+            else if (overrideController != null)
+            {
+                animator.runtimeAnimatorController = overrideController.runtimeAnimatorController;
+            }
+
         }
 
         private void DestroyOldWeapon(Transform rightHand, Transform leftHand)
