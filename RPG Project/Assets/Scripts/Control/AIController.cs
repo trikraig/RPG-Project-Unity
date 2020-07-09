@@ -1,8 +1,7 @@
 ﻿using RPG.Combat;
 using RPG.Core;
 using RPG.Movement;
-using System;
-using System.Runtime.InteropServices.WindowsRuntime;
+using RPG.Resources;
 using UnityEngine;
 
 namespace RPG.Control
@@ -11,7 +10,7 @@ namespace RPG.Control
     {
         [SerializeField] float chaseDistance = 5f;
         [SerializeField] float suspicionTime = 3f;
-        [SerializeField] PatrolPath patrolPath;
+        [SerializeField] PatrolPath patrolPath = null;
         [SerializeField] float waypointTolerance = 1f;
         [SerializeField] float timeDwellAtWaypoint = 2f;
         [Range(0,1)] //Limits value to between 0 - 1
