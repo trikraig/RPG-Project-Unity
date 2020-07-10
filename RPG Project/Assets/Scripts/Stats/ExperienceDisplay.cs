@@ -13,7 +13,7 @@ namespace RPG.Stats
 
         private void Update()
         {
-            GetComponent<Text>().text = string.Format("{0:0}", experience.GetExperiencePoints());
+            GetComponent<Text>().text = string.Format("{0:0}", experience.ExperiencePoints);
         }
     }
 
