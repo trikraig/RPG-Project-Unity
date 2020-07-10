@@ -1,6 +1,7 @@
 ﻿using RPG.Core;
 using RPG.Saving;
 using RPG.Stats;
+using System;
 using UnityEngine;
 
 namespace RPG.Resources
@@ -13,21 +14,29 @@ namespace RPG.Resources
 
         private void Start()
         {
-            //TODO FIX
-            maxHealth = GetComponent<BaseStats>().GetHealth();
+
+            maxHealth = GetComponent<BaseStats>().GetStat(Stat.Health);
             healthPoints = maxHealth;
         }
 
         public bool IsDead() => isDead;
 
-        public void TakeDamage(float damage)
+        public void TakeDamage(GameObject instigator, float damage)
         {
             healthPoints = Mathf.Max(healthPoints - damage, 0);
             if (healthPoints == 0)
             {
                 Die();
+                AwardExperience(instigator);
+                
             }
 
+        }
+
+        private void AwardExperience(GameObject instigator)
+        {
+            if (instigator.GetComponent<Experience>() == null) return;
+            instigator.GetComponent<Experience>().GainExperience(GetComponent<BaseStats>().GetStat(Stat.ExperienceReward));
         }
 
         public float GetPercentage()
