@@ -64,6 +64,8 @@ namespace RPG.Combat
             currentWeapon = weapon;
 
         }
+        
+        public Health Target => target;
 
         private void AttackBehaviour()
         {
