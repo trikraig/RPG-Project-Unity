@@ -3,12 +3,13 @@ using RPG.Movement;
 using RPG.Resources;
 using RPG.Saving;
 using RPG.Stats;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RPG.Combat
 {
 
-    public class Fighter : MonoBehaviour, IAction, ISaveable
+    public class Fighter : MonoBehaviour, IAction, ISaveable, IModifierProvider
     {
 
         [SerializeField] float timeBetweenAttacks = 1f;
@@ -86,6 +87,7 @@ namespace RPG.Combat
         {
             if (!target) { return; }
             float damageToInflict = GetComponent<BaseStats>().GetStat(Stat.Damage);
+            print("Damage to inflict: " + damageToInflict);
             if (currentWeapon.HasProjectile())
             {
                 currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, gameObject, target, damageToInflict);
@@ -141,6 +143,14 @@ namespace RPG.Combat
         public void RestoreState(object state)
         {
             EquipWeapon(UnityEngine.Resources.Load<Weapon>((string)state));
+        }
+
+        public IEnumerable<float> GetAdditiveModifiers(Stat stat)
+        {
+            if (stat == Stat.Damage)
+            {
+                yield return currentWeapon.GetDamage();
+            }
         }
     }
 }
