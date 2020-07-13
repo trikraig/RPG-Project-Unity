@@ -132,6 +132,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2469391800489511456, guid: 08f72722f6fa68448925aac7786ff506,
         type: 3}
+    - target: {fileID: 1918420664328943381, guid: 45691dd60f7cd364e8eef6d74e35eb01,
+        type: 3}
+      propertyPath: shouldUseModifiers
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8297332059265976322, guid: 45691dd60f7cd364e8eef6d74e35eb01,
         type: 3}
       propertyPath: weaponDamage
