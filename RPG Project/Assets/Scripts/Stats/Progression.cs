@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace RPG.Stats
@@ -31,8 +30,8 @@ namespace RPG.Stats
             if (lookupTable != null) return;
 
             lookupTable = new Dictionary<CharacterClass, Dictionary<Stat, float[]>>();
-            
-            foreach(ProgressionCharacterClass progressionClass in characterClasses)
+
+            foreach (ProgressionCharacterClass progressionClass in characterClasses)
             {
                 var statLookupTable = new Dictionary<Stat, float[]>();
 
@@ -41,7 +40,7 @@ namespace RPG.Stats
                     statLookupTable[progressionStat.stat] = progressionStat.levels;
                 }
 
-               lookupTable[progressionClass.characterClass] = statLookupTable;
+                lookupTable[progressionClass.characterClass] = statLookupTable;
             }
         }
 

@@ -11,29 +11,30 @@ namespace RPG.Combat
 
     public class Fighter : MonoBehaviour, IAction, ISaveable, IModifierProvider
     {
+        Weapon currentWeapon = null;
+        Health target = null;
+        Mover mover = null;
+        Animator animator = null;
 
         [SerializeField] float timeBetweenAttacks = 1f;
         [SerializeField] Transform rightHandTransform = null;
         [SerializeField] Transform leftHandTransform = null;
         [SerializeField] Weapon defaultWeapon = null;
 
-
-        Weapon currentWeapon = null;
-
-        Health target;
-        Mover mover;
-        Animator animator;
         float timeSinceLastAttack = Mathf.Infinity;
 
         private void Awake()
         {
             mover = GetComponent<Mover>();
-            animator = GetComponent<Animator>();
+            animator = GetComponent<Animator>();          
+        }
+
+        private void Start()
+        {
             if (currentWeapon == null)
             {
                 EquipWeapon(defaultWeapon);
             }
-            
         }
 
         private void Update()
@@ -59,16 +60,6 @@ namespace RPG.Combat
             }
         }
 
-        public void EquipWeapon(Weapon weapon)
-        {
-            if (weapon == null || rightHandTransform == null || leftHandTransform == null) { return; }
-            weapon.Spawn(rightHandTransform, leftHandTransform, animator);
-            currentWeapon = weapon;
-
-        }
-        
-        public Health Target => target;
-
         private void AttackBehaviour()
         {
             transform.LookAt(target.transform);
@@ -80,6 +71,17 @@ namespace RPG.Combat
         {
             animator.ResetTrigger("stopAttack");
             animator.SetTrigger("attack");
+        }
+
+        private void StopAttackAnimation()
+        {
+            animator.SetTrigger("stopAttack");
+            animator.ResetTrigger("attack");
+        }
+
+        private bool GetIsCurrentTargetInRange()
+        {
+            return Vector3.Distance(transform.position, target.transform.position) < currentWeapon.GetRange();
         }
 
         //Animation Event
@@ -123,17 +125,14 @@ namespace RPG.Combat
             mover.Cancel();
             StopAttackAnimation();
         }
-
-        private void StopAttackAnimation()
+        public void EquipWeapon(Weapon weapon)
         {
-            animator.SetTrigger("stopAttack");
-            animator.ResetTrigger("attack");
+            if (weapon == null || rightHandTransform == null || leftHandTransform == null) { return; }
+            weapon.Spawn(rightHandTransform, leftHandTransform, animator);
+            currentWeapon = weapon;
         }
 
-        private bool GetIsCurrentTargetInRange()
-        {
-            return Vector3.Distance(transform.position, target.transform.position) < currentWeapon.GetRange();
-        }
+        public Health Target => target;
 
         public object CaptureState()
         {

@@ -6,10 +6,12 @@ namespace RPG.Combat
     public class EnemyHealthDisplay : MonoBehaviour
     {
         Fighter fighter;
+        Text textDisplay;
         // Start is called before the first frame update
         void Awake()
         {
             fighter = GameObject.FindWithTag("Player").GetComponent<Fighter>();
+            textDisplay = GetComponent<Text>();
         }
 
         // Update is called once per frame
@@ -17,11 +19,11 @@ namespace RPG.Combat
         {
             if (fighter.Target != null)
             {
-                GetComponent<Text>().text = string.Format("{0:0}/{1:0}", fighter.Target.GetHealthPoints(), fighter.Target.GetMaxHealthPoints());
+               textDisplay.text = string.Format("{0:0}/{1:0}", fighter.Target.GetHealthPoints(), fighter.Target.GetMaxHealthPoints());
             }
             else
             {
-                GetComponent<Text>().text = "N/A";
+               textDisplay.text = "N/A";
             }
         }
     }

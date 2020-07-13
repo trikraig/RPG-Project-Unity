@@ -33,6 +33,10 @@ namespace RPG.Control
             health = GetComponent<Health>();
             mover = GetComponent<Mover>();
             player = GameObject.FindWithTag("Player");
+        }
+
+        private void Start()
+        {
             guardLocation = transform.position;
         }
 

@@ -10,9 +10,8 @@ namespace RPG.Movement
     public class Mover : MonoBehaviour, IAction, ISaveable
     {
         [SerializeField] float maxSpeed = 6;
-
-        NavMeshAgent navMeshAgent;
-        Health health;
+        NavMeshAgent navMeshAgent = null;
+        Health health = null;
         private void Awake()
         {
             health = GetComponent<Health>();
@@ -41,7 +40,7 @@ namespace RPG.Movement
 
         private void UpdateAnimator()
         {
-            Vector3 velocity = GetComponent<NavMeshAgent>().velocity;
+            Vector3 velocity = navMeshAgent.velocity;
             Vector3 localVelocity = transform.InverseTransformDirection(velocity);
             float speed = localVelocity.z;
             GetComponent<Animator>().SetFloat("forwardSpeed", speed);
@@ -56,23 +55,14 @@ namespace RPG.Movement
 
         public object CaptureState()
         {
-            //Dictionary <string, object> data = new Dictionary<string, object>();
-            //data["position"] = new SerializableVector3(transform.position);
-            //data["rotation"] = new SerializableVector3(transform.eulerAngles);
-            //return data;
             MoverSaveData data = new MoverSaveData();
-            data.position = new SerializableVector3 (transform.position);
+            data.position = new SerializableVector3(transform.position);
             data.rotation = new SerializableVector3(transform.eulerAngles);
             return data;
         }
 
         public void RestoreState(object state)
         {
-
-            //Dictionary<string, object> data = (Dictionary<string, object>)state;
-            //navMeshAgent.Warp(((SerializableVector3)data["position"]).ToVector());
-            //transform.eulerAngles = ((SerializableVector3)data["rotation"]).ToVector();
-
             MoverSaveData data = (MoverSaveData)state;
             navMeshAgent.Warp(data.position.ToVector());
             transform.eulerAngles = data.rotation.ToVector();

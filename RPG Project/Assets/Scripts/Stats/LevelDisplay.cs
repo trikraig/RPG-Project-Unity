@@ -5,16 +5,18 @@ namespace RPG.Stats
 {
     public class LevelDisplay : MonoBehaviour
     {
-        BaseStats baseStats;
+        BaseStats baseStats = null;
+        Text textDisplay = null;
         private void Awake()
         {
             baseStats = GameObject.FindWithTag("Player").GetComponent<BaseStats>();
+            textDisplay = GetComponent<Text>();
         }
 
         // Update is called once per frame
         void Update()
         {
-            GetComponent<Text>().text = string.Format("{0:0}", baseStats.GetLevel());
+            textDisplay.text = string.Format("{0:0}", baseStats.GetLevel());
         }
     }
 }

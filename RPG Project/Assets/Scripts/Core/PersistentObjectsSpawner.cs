@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace RPG.Core
 {
@@ -12,17 +8,19 @@ namespace RPG.Core
 
         static bool hasSpawned = false;
 
-        private void Awake()
+        private void Start()
         {
-            if (hasSpawned) return;
-            SpawnPersistentObjects();
-            hasSpawned = true;
+            if (!hasSpawned)
+            {
+                SpawnPersistentObjects();
+            }
         }
 
         private void SpawnPersistentObjects()
         {
             GameObject persistentObject = Instantiate(persistentObjectPrefab);
             DontDestroyOnLoad(persistentObject);
+            hasSpawned = true;
         }
     }
 

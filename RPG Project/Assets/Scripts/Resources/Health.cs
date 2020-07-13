@@ -1,7 +1,6 @@
 ﻿using RPG.Core;
 using RPG.Saving;
 using RPG.Stats;
-using System;
 using UnityEngine;
 
 namespace RPG.Resources
@@ -9,11 +8,9 @@ namespace RPG.Resources
     public class Health : MonoBehaviour, ISaveable
     {
         [SerializeField] float regenerationPercentage = 70f;
+        BaseStats baseStats = null;
         float healthPoints = -1f;
-
         bool isDead = false;
-
-        BaseStats baseStats;
         private void Awake()
         {
             baseStats = GetComponent<BaseStats>();
@@ -23,7 +20,7 @@ namespace RPG.Resources
             baseStats.onLevelUp += RegenerateHealth;
             if (healthPoints < 0)
             {
-                 healthPoints = baseStats.GetStat(Stat.Health);
+                healthPoints = baseStats.GetStat(Stat.Health);
             }
         }
 
@@ -31,15 +28,12 @@ namespace RPG.Resources
 
         public void TakeDamage(GameObject instigator, float damage)
         {
-            print(gameObject.name + " took damage: " + damage);
             healthPoints = Mathf.Max(healthPoints - damage, 0);
             if (healthPoints == 0)
             {
                 Die();
                 AwardExperience(instigator);
-                
             }
-
         }
 
         public float GetHealthPoints()

@@ -20,7 +20,6 @@ namespace RPG.Combat
         private void Start()
         {
             transform.LookAt(GetAimLocation());
-
         }
 
         // Update is called once per frame
@@ -36,7 +35,7 @@ namespace RPG.Combat
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }
 
-        
+
         public void SetTarget(Health target, GameObject instigator, float damage)
         {
             this.target = target;

@@ -1,5 +1,4 @@
-﻿using RPG.Core;
-using RPG.Resources;
+﻿using RPG.Resources;
 using UnityEngine;
 
 
@@ -17,6 +16,23 @@ namespace RPG.Combat
         [SerializeField] Projectile projectile;
 
         const string weaponName = "Weapon";
+
+        private void DestroyOldWeapon(Transform rightHand, Transform leftHand)
+        {
+            Transform oldWeapon = rightHand.Find(weaponName);
+            if (oldWeapon == null)
+            {
+                oldWeapon = leftHand.Find(weaponName);
+            }
+            if (oldWeapon == null) { return; }
+            oldWeapon.name = "DESTROYING";
+            Destroy(oldWeapon.gameObject);
+        }
+
+        private Transform GetTransform(Transform rightHand, Transform leftHand)
+        {
+            return isRightHanded ? rightHand : leftHand;
+        }
 
         public void Spawn(Transform rightHand, Transform leftHand, Animator animator)
         {
@@ -39,23 +55,6 @@ namespace RPG.Combat
                 animator.runtimeAnimatorController = overrideController.runtimeAnimatorController;
             }
 
-        }
-
-        private void DestroyOldWeapon(Transform rightHand, Transform leftHand)
-        {
-            Transform oldWeapon = rightHand.Find(weaponName);
-            if (oldWeapon == null)
-            {
-                oldWeapon = leftHand.Find(weaponName);
-            }
-            if (oldWeapon == null) { return; }
-            oldWeapon.name = "DESTROYING";
-            Destroy(oldWeapon.gameObject);
-        }
-
-        private Transform GetTransform(Transform rightHand, Transform leftHand)
-        {
-            return isRightHanded ? rightHand : leftHand;
         }
 
         public bool HasProjectile()

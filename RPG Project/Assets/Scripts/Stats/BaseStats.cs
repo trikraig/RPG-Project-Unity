@@ -16,14 +16,33 @@ namespace RPG.Stats
 
         int currentLevel = 0;
 
+        Experience experience;
+
+        private void Awake()
+        {
+            experience = GetComponent<Experience>();
+        }
+
         private void Start()
         {
-            currentLevel = CalculateLevel();
-            Experience experience = GetComponent<Experience>();
+            currentLevel = CalculateLevel();           
+        }
+
+        private void OnEnable()
+        {
             if (experience != null)
             {
                 //Doesnt call UpdateLevel but adds it to list of methods called onExperienceGained
                 experience.onExperienceGained += UpdateLevel;
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (experience != null)
+            {
+                //Disable registration
+                experience.onExperienceGained -= UpdateLevel;
             }
         }
 
@@ -98,7 +117,6 @@ namespace RPG.Stats
 
         private int CalculateLevel()
         {
-            Experience experience = GetComponent<Experience>();
             if (experience == null) return startingLevel;
 
             float currentXP = experience.ExperiencePoints;
@@ -114,7 +132,5 @@ namespace RPG.Stats
             }
             return penultimateLevel + 1;
         }
-
-
     }
 }
