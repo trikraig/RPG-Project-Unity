@@ -2,6 +2,7 @@
 using RPG.Resources;
 using System;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.EventSystems;
 
 namespace RPG.Control
@@ -20,6 +21,7 @@ namespace RPG.Control
         }
 
         [SerializeField] CursorMapping[] cursorMappings = null;
+        [SerializeField] float maxNavMeshProjectionDisance = 1f;
         private void Awake()
         {
             health = GetComponent<Health>();
@@ -81,17 +83,35 @@ namespace RPG.Control
 
         private bool InteractWithMovement()
         {
-            bool hasHit = Physics.Raycast(GetMouseRay(), out RaycastHit hit);
+
+            Vector3 target;
+            bool hasHit = RaycastNavMesh(out target);
             if (hasHit)
             {
                 if (Input.GetMouseButton(0))
                 {
-                    GetComponent<Mover>().StartMoveAction(hit.point, 1f);
+                    GetComponent<Mover>().StartMoveAction(target, 1f);
                 }
                 SetCursor(CursorType.Movement);
-                //Even if hovering - cursor affordance - hint to user what can be done
                 return true;
             }
+            return false;
+        }
+
+        private bool RaycastNavMesh(out Vector3 target)
+        {
+            target = new Vector3();
+            //Raycast to terrain;
+            bool hasHit = Physics.Raycast(GetMouseRay(), out RaycastHit hit);
+            if (!hasHit) return false;
+            //Find nearest navmesh point
+            NavMeshHit navMeshHit;
+            if (NavMesh.SamplePosition(hit.point, out navMeshHit, maxNavMeshProjectionDisance, NavMesh.AllAreas))
+            {
+                target = navMeshHit.position;
+                return true;
+            }
+            //Cannot navigate to point
             return false;
         }
 
