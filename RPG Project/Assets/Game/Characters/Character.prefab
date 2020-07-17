@@ -172,6 +172,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   regenerationPercentage: 70
+  takeDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8732323791981559131}
+        m_MethodName: Spawn
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: RPG.Resources.Health+TakeDamageEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &2756316794060041448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,3 +293,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8549422507286781978}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8732323791981559131 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1119940829390986561, guid: 31ea6555e07cb8b4a99b7668ec178249,
+    type: 3}
+  m_PrefabInstance: {fileID: 8549422507286781978}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4674eb940b756a6479a4b95ac0b237c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

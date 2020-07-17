@@ -1,19 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 namespace RPG.UI
 {
     public class DamageText : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
+        [SerializeField] Text damageText = null;
+        public void SetValue(float amount)
         {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            damageText.text = amount.ToString();
         }
     }
 

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7402644021703464109}
   - component: {fileID: 6561205772303842612}
   - component: {fileID: 3249715035616858040}
+  - component: {fileID: 979925904743338728}
   m_Layer: 5
   m_Name: ' Canvas'
   m_TagString: Untagged
@@ -142,6 +143,19 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &979925904743338728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164055372333752910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75c4f72919f082f40a9358f8f5472335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetToDestroy: {fileID: 8653342687116384798}
 --- !u!1 &6310925958204528524
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,3 +281,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58dc279c851568c41b98ddac6662153e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageText: {fileID: 4134945519118992768}
