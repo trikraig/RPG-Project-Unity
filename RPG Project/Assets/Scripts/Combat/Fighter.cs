@@ -1,7 +1,7 @@
 ﻿using GameDevTV.Utils;
 using RPG.Core;
 using RPG.Movement;
-using RPG.Resources;
+using RPG.Attributes;
 using RPG.Saving;
 using RPG.Stats;
 using System;

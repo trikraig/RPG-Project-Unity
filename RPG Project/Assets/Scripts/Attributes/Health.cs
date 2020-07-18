@@ -5,7 +5,7 @@ using RPG.Stats;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace RPG.Resources
+namespace RPG.Attributes
 {
     public class Health : MonoBehaviour, ISaveable
     {
@@ -86,6 +86,11 @@ namespace RPG.Resources
         public float GetPercentage()
         {
             return healthPoints.value / baseStats.GetStat(Stat.Health) * 100;
+        }
+
+        public float GetFraction()
+        {
+            return healthPoints.value / baseStats.GetStat(Stat.Health);
         }
 
         private void Die()
