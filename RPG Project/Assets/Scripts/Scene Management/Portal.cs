@@ -1,7 +1,7 @@
-﻿using System.Collections;
+﻿using RPG.Control;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Experimental.UIElements.StyleEnums;
 using UnityEngine.SceneManagement;
 
 namespace RPG.SceneManagement
@@ -37,29 +37,35 @@ namespace RPG.SceneManagement
                 yield break;
             }
             DontDestroyOnLoad(gameObject);
-           
+
             Fader fader = FindObjectOfType<Fader>();
+            SavingWrapper wrapper = FindObjectOfType<SavingWrapper>();
 
+            //Remove control
+            DisableControl();
+            //Begin Fading out
             yield return fader.FadeOut(fadeOutTime);
-
-            //Save current level
-
-           SavingWrapper wrapper = FindObjectOfType<SavingWrapper>();
-           wrapper.Save();
-
+            //Save Data to carry through
+            wrapper.Save();
+            //Load next scene
             yield return SceneManager.LoadSceneAsync(sceneToLoad);
-
+            //Remove control from new player in new scene
+            DisableControl();
             //Load current level
             wrapper.Load();
-
+            //Find new portal to travel to
             Portal otherPortal = GetOtherPortal();
+            //Trasport player to new level
             UpdatePlayer(otherPortal);
-
+            //Create autosave for new position in level
             wrapper.Save();
-
+            //Time to wait to allow everything to load
             yield return new WaitForSeconds(fadeWaitTime);
-            yield return fader.FadeIn(fadeInTime);
-
+            //Fade in
+            fader.FadeIn(fadeInTime);
+            //Restore control
+            EnableControl();
+            //Destroy old portal
             Destroy(gameObject);
         }
 
@@ -80,6 +86,16 @@ namespace RPG.SceneManagement
             }
 
             return null;
+        }
+
+        void DisableControl()
+        {
+            GameObject.FindWithTag("Player").GetComponent<PlayerController>().enabled = false;
+        }
+
+        void EnableControl()
+        {
+            GameObject.FindWithTag("Player").GetComponent<PlayerController>().enabled = true;
         }
     }
 
