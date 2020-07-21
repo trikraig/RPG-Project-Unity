@@ -13,7 +13,7 @@ namespace RPG.Combat
 
     public class Fighter : MonoBehaviour, IAction, ISaveable, IModifierProvider
     {
-        LazyValue <Weapon> currentWeapon;
+        LazyValue <WeaponConfig> currentWeapon;
 
         Health target = null;
         Mover mover = null;
@@ -22,7 +22,7 @@ namespace RPG.Combat
         [SerializeField] float timeBetweenAttacks = 1f;
         [SerializeField] Transform rightHandTransform = null;
         [SerializeField] Transform leftHandTransform = null;
-        [SerializeField] Weapon defaultWeapon = null;
+        [SerializeField] WeaponConfig defaultWeapon = null;
 
         float timeSinceLastAttack = Mathf.Infinity;
 
@@ -30,10 +30,10 @@ namespace RPG.Combat
         {
             mover = GetComponent<Mover>();
             animator = GetComponent<Animator>();
-            currentWeapon = new LazyValue<Weapon>(SetupDefaultWeapon);
+            currentWeapon = new LazyValue<WeaponConfig>(SetupDefaultWeapon);
         }
 
-        private Weapon SetupDefaultWeapon()
+        private WeaponConfig SetupDefaultWeapon()
         {
             EquipWeapon(defaultWeapon);
             return defaultWeapon;
@@ -132,7 +132,7 @@ namespace RPG.Combat
             mover.Cancel();
             StopAttackAnimation();
         }
-        public void EquipWeapon(Weapon weapon)
+        public void EquipWeapon(WeaponConfig weapon)
         {
             if (weapon == null || rightHandTransform == null || leftHandTransform == null) { return; }
             weapon.Spawn(rightHandTransform, leftHandTransform, animator);
@@ -148,7 +148,7 @@ namespace RPG.Combat
 
         public void RestoreState(object state)
         {
-            EquipWeapon(UnityEngine.Resources.Load<Weapon>((string)state));
+            EquipWeapon(UnityEngine.Resources.Load<WeaponConfig>((string)state));
         }
 
         public IEnumerable<float> GetAdditiveModifiers(Stat stat)
