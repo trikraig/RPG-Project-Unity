@@ -2,6 +2,7 @@
 using RPG.Core;
 using RPG.Saving;
 using RPG.Stats;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -24,12 +25,12 @@ namespace RPG.Attributes
         private void Awake()
         {
             baseStats = GetComponent<BaseStats>();
-            healthPoints = new LazyValue<float>(GetInitialHealth);
+            healthPoints = new LazyValue<float>(GetMaxHealthPoints);
         }
 
-        private float GetInitialHealth()
+        public void Heal(float healthToRestore)
         {
-            return baseStats.GetStat(Stat.Health);
+            healthPoints.value = Mathf.Min(healthPoints.value + healthToRestore, GetMaxHealthPoints());
         }
 
         private void Start()
