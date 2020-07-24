@@ -44,6 +44,8 @@ namespace RPG.Combat
             {
                 Transform handTransform = GetTransform(rightHand, leftHand);
                 weapon = Instantiate(equippedPrefab, handTransform);
+                //TODO TEST Scale off when instantiated into hand
+                weapon.transform.localScale = new Vector3(100f, 100f, 100f);
                 weapon.gameObject.name = weaponName;
             }
             var overrideController = animator.runtimeAnimatorController as AnimatorOverrideController;

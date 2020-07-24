@@ -41,6 +41,7 @@ namespace RPG.Attributes
 
         private void OnEnable()
         {
+            
             baseStats.onLevelUp += RegenerateHealth;
         }
 

@@ -77,7 +77,7 @@ namespace RPG.Stats
 
         private float GetBaseStat(Stat stat)
         {
-            print("Base Stat: " + progression.GetStat(stat, characterClass, GetLevel()));
+            //print("Base Stat: " + progression.GetStat(stat, characterClass, GetLevel()));
             return progression.GetStat(stat, characterClass, GetLevel());
         }
         private float GetAdditiveModifier(Stat stat)
