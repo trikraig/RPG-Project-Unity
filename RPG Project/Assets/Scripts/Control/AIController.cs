@@ -1,9 +1,8 @@
 ﻿using GameDevTV.Utils;
+using RPG.Attributes;
 using RPG.Combat;
 using RPG.Core;
 using RPG.Movement;
-using RPG.Attributes;
-using System;
 using UnityEngine;
 
 namespace RPG.Control
@@ -16,15 +15,16 @@ namespace RPG.Control
         [SerializeField] PatrolPath patrolPath = null;
         [SerializeField] float waypointTolerance = 1f;
         [SerializeField] float timeDwellAtWaypoint = 2f;
-        [Range(0,1)] //Limits value to between 0 - 1
+        [Range(0, 1)] //Limits value to between 0 - 1
         [SerializeField] float patrolSpeedFraction = 0.2f;
+        [SerializeField] float shoutDistance = 5f;
 
         Fighter fighter;
         Health health;
         Mover mover;
         GameObject player;
 
-        LazyValue <Vector3> guardPosition;
+        LazyValue<Vector3> guardPosition;
         float timeSinceLastSawPlayer = Mathf.Infinity;
         float timeSinceArrivedAtWaypoint = Mathf.Infinity;
         float timeSinceAggrevated = Mathf.Infinity;
@@ -55,7 +55,7 @@ namespace RPG.Control
             if (health == null || health.IsDead()) { return; }
 
             if (IsAggrevated() && fighter.CanAttack(player))
-            {               
+            {
                 AttackBehaviour();
             }
             else if (timeSinceLastSawPlayer < suspicionTime)
@@ -70,6 +70,7 @@ namespace RPG.Control
             UpdateTimers();
         }
 
+        //Called via OnDamage event
         public void Aggrevate()
         {
             timeSinceAggrevated = 0;
@@ -97,7 +98,7 @@ namespace RPG.Control
             }
             if (timeSinceArrivedAtWaypoint > timeDwellAtWaypoint)
             {
-                 mover.StartMoveAction(nextPosition, patrolSpeedFraction);
+                mover.StartMoveAction(nextPosition, patrolSpeedFraction);
             }
         }
 
@@ -113,7 +114,7 @@ namespace RPG.Control
 
         private bool AtWaypoint()
         {
-            float distanceToWaypoint = Vector3.Distance(transform.position,GetCurrentWaypoint());
+            float distanceToWaypoint = Vector3.Distance(transform.position, GetCurrentWaypoint());
             return distanceToWaypoint < waypointTolerance;
         }
 
@@ -126,13 +127,27 @@ namespace RPG.Control
         {
             timeSinceLastSawPlayer = 0;
             fighter.Attack(player);
+
+            AggrevateNearbyEnemies();
+        }
+
+        private void AggrevateNearbyEnemies()
+        {
+            RaycastHit[] hits = Physics.SphereCastAll(transform.position, shoutDistance, Vector3.up, 0);
+            //loop over hits
+            foreach (RaycastHit hit in hits)
+            {
+                AIController enemyAIController = hit.collider.GetComponent<AIController>();
+                if (enemyAIController == null) { continue; }
+                enemyAIController.Aggrevate();
+            }
         }
 
         private bool IsAggrevated()
         {
             float distanceToPlayer = Vector3.Distance(this.transform.position, player.transform.position);
-            
-            return  distanceToPlayer < chaseDistance || timeSinceAggrevated < aggroCooldownTime;
+
+            return distanceToPlayer < chaseDistance || timeSinceAggrevated < aggroCooldownTime;
         }
 
         //Called by Unity
@@ -140,6 +155,8 @@ namespace RPG.Control
         {
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(transform.position, chaseDistance);
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, shoutDistance);
         }
     }
 }
