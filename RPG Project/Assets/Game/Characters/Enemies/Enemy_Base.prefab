@@ -66,7 +66,7 @@ PrefabInstance:
     - target: {fileID: 5997113323775262977, guid: 45691dd60f7cd364e8eef6d74e35eb01,
         type: 3}
       propertyPath: m_Name
-      value: Guard
+      value: Enemy_Base
       objectReference: {fileID: 0}
     - target: {fileID: 4664692157138190085, guid: 45691dd60f7cd364e8eef6d74e35eb01,
         type: 3}
@@ -171,8 +171,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8636782698702593542, guid: 45691dd60f7cd364e8eef6d74e35eb01,
         type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636782698702593542, guid: 45691dd60f7cd364e8eef6d74e35eb01,
+        type: 3}
       propertyPath: healthPoints
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636782698702593542, guid: 45691dd60f7cd364e8eef6d74e35eb01,
+        type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636782698702593542, guid: 45691dd60f7cd364e8eef6d74e35eb01,
+        type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636782698702593542, guid: 45691dd60f7cd364e8eef6d74e35eb01,
+        type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 2544074691322944210}
+    - target: {fileID: 8636782698702593542, guid: 45691dd60f7cd364e8eef6d74e35eb01,
+        type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: Aggrevate
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636782698702593542, guid: 45691dd60f7cd364e8eef6d74e35eb01,
+        type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5997113323775262980, guid: 45691dd60f7cd364e8eef6d74e35eb01,
         type: 3}
