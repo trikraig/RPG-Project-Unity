@@ -14,6 +14,7 @@ namespace RPG.Combat
         [SerializeField] private float percentageBonus = 0f;
         [SerializeField] private bool isRightHanded = true;
         [SerializeField] Projectile projectile;
+        [SerializeField] GameObject damageEffect = null;
 
         const string weaponName = "Weapon";
 
@@ -44,7 +45,6 @@ namespace RPG.Combat
             {
                 Transform handTransform = GetTransform(rightHand, leftHand);
                 weapon = Instantiate(equippedPrefab, handTransform);
-                //TODO TEST Scale off when instantiated into hand
                 weapon.transform.localScale = new Vector3(100f, 100f, 100f);
                 weapon.gameObject.name = weaponName;
             }
@@ -86,6 +86,20 @@ namespace RPG.Combat
         public float GetPercentageBonus()
         {
             return percentageBonus;
+        }
+
+        public void InstantiateDamageEffect(Health target)
+        {
+            if(damageEffect != null)
+            {
+                Instantiate(damageEffect, GetAimLocation(target), target.transform.rotation);
+            }
+        }
+        private Vector3 GetAimLocation(Health target)
+        {
+            CapsuleCollider targetCapsule = target.GetComponent<CapsuleCollider>();
+            if (!targetCapsule) { return target.transform.position; }
+            return target.transform.position + (Vector3.up * targetCapsule.height / 2);
         }
     }
 }

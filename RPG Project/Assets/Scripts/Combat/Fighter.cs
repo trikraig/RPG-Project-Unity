@@ -108,11 +108,13 @@ namespace RPG.Combat
                 currentWeaponConfig.LaunchProjectile(rightHandTransform, leftHandTransform, gameObject, target, damageToInflict);
             }
             else
-            {          
-                //currentWeapon.GetDamage()
+            {
+                currentWeaponConfig.InstantiateDamageEffect(target);
+
                 target.TakeDamage(gameObject, damageToInflict);
             }
         }
+
         //Animation Event
         void Shoot()
         {

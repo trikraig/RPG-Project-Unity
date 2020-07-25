@@ -303,6 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 6
+  maxNavPathLength: 40
 --- !u!114 &8297332059265976322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,6 +376,8 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  damageEffect: {fileID: 1000387334335399679, guid: 66ae4ba917ae1554280a45f21d16c53f,
+    type: 3}
 --- !u!114 &2756316794060041448
 MonoBehaviour:
   m_ObjectHideFlags: 0

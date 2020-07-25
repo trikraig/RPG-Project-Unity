@@ -20,3 +20,5 @@ MonoBehaviour:
   percentageBonus: 20
   isRightHanded: 1
   projectile: {fileID: 0}
+  damageEffect: {fileID: 1000387334335399679, guid: 66ae4ba917ae1554280a45f21d16c53f,
+    type: 3}

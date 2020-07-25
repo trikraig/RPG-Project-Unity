@@ -304,8 +304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   isHoming: 0
-  hitEffect: {fileID: 4366399598901566597, guid: 2a50c7c7f962a164f86c4f0f016bb459,
-    type: 3}
+  hitEffect: {fileID: 100004, guid: fb7b0526ade434043b350a180d741cf3, type: 3}
   maxLifeTime: 10
   destroyOnHit:
   - {fileID: 6782178220207573834}

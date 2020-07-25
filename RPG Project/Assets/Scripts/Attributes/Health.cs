@@ -2,7 +2,6 @@
 using RPG.Core;
 using RPG.Saving;
 using RPG.Stats;
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,6 +12,7 @@ namespace RPG.Attributes
         [SerializeField] float regenerationPercentage = 70f;
         [SerializeField] TakeDamageEvent takeDamage;
         [SerializeField] UnityEvent onDie;
+
 
         [System.Serializable]
         public class TakeDamageEvent : UnityEvent<float>
@@ -41,7 +41,7 @@ namespace RPG.Attributes
 
         private void OnEnable()
         {
-            
+
             baseStats.onLevelUp += RegenerateHealth;
         }
 
@@ -57,8 +57,10 @@ namespace RPG.Attributes
             healthPoints.value = Mathf.Max(healthPoints.value - damage, 0);
             takeDamage.Invoke(damage);
 
+
+
             if (healthPoints.value == 0)
-            { 
+            {
                 onDie.Invoke();
                 Die();
                 AwardExperience(instigator);

@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 2302457091093092515, guid: 69d1b1037536b504884c93bb73d662db,
         type: 3}
       propertyPath: m_Name
-      value: Generic Impact
+      value: Arrow Impact
       objectReference: {fileID: 0}
     - target: {fileID: 2302457091092795123, guid: 69d1b1037536b504884c93bb73d662db,
         type: 3}
@@ -167,5 +167,16 @@ PrefabInstance:
       propertyPath: InitialModule.startSpeed.minScalar
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5121024208797574799, guid: 69d1b1037536b504884c93bb73d662db,
+        type: 3}
+      propertyPath: targetToDestroy
+      value: 
+      objectReference: {fileID: 4366399598901566597}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69d1b1037536b504884c93bb73d662db, type: 3}
+--- !u!1 &4366399598901566597 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2302457091093092515, guid: 69d1b1037536b504884c93bb73d662db,
+    type: 3}
+  m_PrefabInstance: {fileID: 2552249936829826086}
+  m_PrefabAsset: {fileID: 0}
