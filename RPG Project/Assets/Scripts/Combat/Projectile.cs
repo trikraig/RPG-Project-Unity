@@ -9,6 +9,8 @@ namespace RPG.Combat
 
         [SerializeField] float speed = 1f;
         [SerializeField] bool isHoming = false;
+        [SerializeField] bool isAreaOfEffect = false;
+        [SerializeField] float areaOfEffectRange = 1f;
         [SerializeField] GameObject hitEffect = null;
         [SerializeField] float maxLifeTime = 10f;
         [SerializeField] GameObject[] destroyOnHit = null;
@@ -58,7 +60,22 @@ namespace RPG.Combat
         {
             if (other.GetComponent<Health>() == target && !target.IsDead())
             {
-                target.TakeDamage(instigator, damage);
+                if (isAreaOfEffect)
+                {
+                    RaycastHit[] hits = Physics.SphereCastAll(GetAimLocation(), areaOfEffectRange, Vector3.up, 0);
+                    foreach (RaycastHit hit in hits)
+                    {
+                        Health nearbyEnemy = hit.collider.GetComponent<Health>();
+                        if (nearbyEnemy == null) { continue; }
+                        nearbyEnemy.TakeDamage(instigator, damage);
+                    }
+                }
+                else
+                {
+
+                    target.TakeDamage(instigator, damage);
+                }
+
                 speed = 0;
                 onHit.Invoke();
                 if (hitEffect) { Instantiate(hitEffect, GetAimLocation(), transform.rotation); }
