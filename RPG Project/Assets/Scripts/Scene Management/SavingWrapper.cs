@@ -1,4 +1,4 @@
-﻿using RPG.Saving;
+﻿using GameDevTV.Saving;
 using System.Collections;
 using UnityEngine;
 
@@ -41,9 +41,15 @@ namespace RPG.SceneManagement
             }
         }
 
-        public void Load() => savingSystem.Load(defaultSaveFile);
+        public void Load()
+        {
+            savingSystem.Load(defaultSaveFile);
+        }
 
-        public void Save() => savingSystem.Save(defaultSaveFile);
+        public void Save()
+        {
+            savingSystem.Save(defaultSaveFile);
+        }
 
         public void Delete()
         {
