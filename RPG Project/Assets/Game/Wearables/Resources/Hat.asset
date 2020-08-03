@@ -15,7 +15,7 @@ MonoBehaviour:
   itemID: 6ab2d811-a507-4165-9492-ec176f47e883
   displayName: Hat
   description: 
-  icon: {fileID: 21300000, guid: 7c4272045db356d4191801bf4343dbe3, type: 3}
+  icon: {fileID: 21300000, guid: c1b61b3a91732a747a8496fc75a13fe2, type: 3}
   pickup: {fileID: 8214274984672329007, guid: 7f9e59aae37df764eb52307427144b83, type: 3}
   stackable: 0
   allowedEquipLocation: 0
