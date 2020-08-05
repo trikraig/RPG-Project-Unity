@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73d80122dc45acf41952b772684303f8, type: 3}
   m_Name: Fireball
   m_EditorClassIdentifier: 
+  itemID: c9e6fa98-0d1a-459f-8815-b505df3a2d50
+  displayName: Fire Spell
+  description: Targeted Fire Spell
+  icon: {fileID: 21300000, guid: a1ec2c0ddc0da634b85f0f465fec2d0d, type: 3}
+  pickup: {fileID: 3795424210234802614, guid: 6b2156a6a3d13f74d801b08cd26da8fb, type: 3}
+  stackable: 0
+  allowedEquipLocation: 5
   animatorOverride: {fileID: 22100000, guid: 01f41b7f12d9c0c459de7844715b4c08, type: 2}
   equippedPrefab: {fileID: 0}
   weaponRange: 20
@@ -20,3 +27,4 @@ MonoBehaviour:
   isRightHanded: 0
   projectile: {fileID: 4411611042063953300, guid: 58cdb8e3529d803419ce6b216f0c24b3,
     type: 3}
+  damageEffect: {fileID: 0}

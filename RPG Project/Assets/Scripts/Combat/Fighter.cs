@@ -1,10 +1,10 @@
-﻿using GameDevTV.Utils;
+﻿using GameDevTV.Inventories;
+using GameDevTV.Saving;
+using GameDevTV.Utils;
+using RPG.Attributes;
 using RPG.Core;
 using RPG.Movement;
-using RPG.Attributes;
-using GameDevTV.Saving;
 using RPG.Stats;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,11 +14,12 @@ namespace RPG.Combat
     public class Fighter : MonoBehaviour, IAction, ISaveable, IModifierProvider
     {
         WeaponConfig currentWeaponConfig;
-        LazyValue <Weapon> currentWeapon;
+        LazyValue<Weapon> currentWeapon;
 
         Health target = null;
         Mover mover = null;
         Animator animator = null;
+        Equipment equipment = null;
 
         [SerializeField] float timeBetweenAttacks = 1f;
         [SerializeField] Transform rightHandTransform = null;
@@ -33,6 +34,25 @@ namespace RPG.Combat
             animator = GetComponent<Animator>();
             currentWeaponConfig = defaultWeapon;
             currentWeapon = new LazyValue<Weapon>(SetupDefaultWeapon);
+            equipment = GetComponent<Equipment>();
+            if (equipment)
+            {
+                equipment.equipmentUpdated += UpdateWeapon;
+            }
+        }
+
+        private void UpdateWeapon()
+        {
+            var weapon = equipment.GetItemInSlot(EquipLocation.Weapon) as WeaponConfig;
+            if (weapon == null)
+            {
+                EquipWeapon(defaultWeapon);
+            }
+            else
+            {
+                print("Equipping : " + weapon.name);
+                EquipWeapon(weapon);
+            }
         }
 
         private Weapon SetupDefaultWeapon()
@@ -149,7 +169,7 @@ namespace RPG.Combat
         }
         public Weapon AttachWeapon(WeaponConfig weaponConfig)
         {
-            return weaponConfig.Spawn(rightHandTransform, leftHandTransform, animator);        
+            return weaponConfig.Spawn(rightHandTransform, leftHandTransform, animator);
         }
 
         public Health Target => target;

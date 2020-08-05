@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73d80122dc45acf41952b772684303f8, type: 3}
   m_Name: Pumpkin of Doom
   m_EditorClassIdentifier: 
+  itemID: fd93a386-c5c9-4ad5-b987-395fbddd5db3
+  displayName: Grenade
+  description: Area of Effect Damage - Also is a pumpkin
+  icon: {fileID: 21300000, guid: a1ec2c0ddc0da634b85f0f465fec2d0d, type: 3}
+  pickup: {fileID: 962117265778323346, guid: a045879ed56edc944bc2eb4937bc9960, type: 3}
+  stackable: 0
+  allowedEquipLocation: 5
   animatorOverride: {fileID: 22100000, guid: 01f41b7f12d9c0c459de7844715b4c08, type: 2}
   equippedPrefab: {fileID: 0}
   weaponRange: 20

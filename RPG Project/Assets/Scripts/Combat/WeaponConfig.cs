@@ -1,11 +1,12 @@
-﻿using RPG.Attributes;
+﻿using GameDevTV.Inventories;
+using RPG.Attributes;
 using UnityEngine;
 
 
 namespace RPG.Combat
 {
     [CreateAssetMenu(fileName = "Weapon", menuName = "Weapons/Make New Weapon", order = 0)]
-    public class WeaponConfig : ScriptableObject
+    public class WeaponConfig : EquipableItem
     {
         [SerializeField] private AnimatorOverrideController animatorOverride = null;
         [SerializeField] private Weapon equippedPrefab = null;
@@ -90,7 +91,7 @@ namespace RPG.Combat
 
         public void InstantiateDamageEffect(Health target)
         {
-            if(damageEffect != null)
+            if (damageEffect != null)
             {
                 Instantiate(damageEffect, GetAimLocation(target), target.transform.rotation);
             }

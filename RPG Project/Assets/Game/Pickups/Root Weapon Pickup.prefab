@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4168574678952453253}
   - component: {fileID: 8606032290147022753}
-  - component: {fileID: 993258703639566798}
   - component: {fileID: 1182863597126100078}
+  - component: {fileID: 4930044207772127348}
+  - component: {fileID: 5079502515211924802}
   m_Layer: 0
-  m_Name: Base Weapon Pickup
+  m_Name: Root Weapon Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,21 +48,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.76871896
   m_Center: {x: 0, y: 0.26871896, z: 0}
---- !u!114 &993258703639566798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8833290404704969170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1da5a1cd6ea3a7942a4173bcda9945d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapon: {fileID: 11400000, guid: 1464486d525fa7b44aa3df61171412e5, type: 2}
-  healthToRestore: 0
-  respawnTime: 5
 --- !u!54 &1182863597126100078
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -78,6 +64,30 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4930044207772127348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8833290404704969170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91f208ba0dbe65d478b628ca24b59c42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5079502515211924802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8833290404704969170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d752613d2d3fed4897c56c0f03c4942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4568101276716227758
 PrefabInstance:
   m_ObjectHideFlags: 0

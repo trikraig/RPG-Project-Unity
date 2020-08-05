@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73d80122dc45acf41952b772684303f8, type: 3}
   m_Name: Unarmed
   m_EditorClassIdentifier: 
+  itemID: 98f75c0c-cb13-4e34-9088-8e92aedca80e
+  displayName: Fighting Fists
+  description: Punchy Punchy
+  icon: {fileID: 21300000, guid: f8078c2bb5ee88d4a9472f76e501e0f3, type: 3}
+  pickup: {fileID: 0}
+  stackable: 0
+  allowedEquipLocation: 5
   animatorOverride: {fileID: 22100000, guid: 5264d91066ac4ae42895ebaed95fbf5a, type: 2}
   equippedPrefab: {fileID: 5471669163545613510, guid: b0013c67fa713e747812fa65f75412a8,
     type: 3}
@@ -20,3 +27,4 @@ MonoBehaviour:
   percentageBonus: 10
   isRightHanded: 1
   projectile: {fileID: 0}
+  damageEffect: {fileID: 0}
