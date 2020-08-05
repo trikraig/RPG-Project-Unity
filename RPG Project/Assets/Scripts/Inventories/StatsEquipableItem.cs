@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace RPG.Inventories
 {
-    [CreateAssetMenu(menuName = ("RPG/Inentory/Equipable Item"))]
+    [CreateAssetMenu(menuName = ("RPG/Inventory/Equipable Item"))]
     public class StatsEquipableItem : EquipableItem, IModifierProvider
     {
         [SerializeField] Modifier[] additiveModifiers;
