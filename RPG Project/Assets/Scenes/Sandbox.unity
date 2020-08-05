@@ -3230,7 +3230,7 @@ PrefabInstance:
         type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 11400000, guid: 8a8c006c9031dab44af1bea58c4db786,
+      objectReference: {fileID: 11400000, guid: 760b96e7961176349b26942dbbb4a10b,
         type: 2}
     - target: {fileID: 5572057469704015434, guid: db7db6b3adb3f9d4b9811e41babba753,
         type: 3}
@@ -3730,7 +3730,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 951478324}
-  m_LocalRotation: {x: -0.0040183985, y: 0.55942875, z: 0.002712154, w: 0.8288642}
+  m_LocalRotation: {x: 0.0028703923, y: 0.77076924, z: 0.003472634, w: -0.63709855}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6445,7 +6445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Path: {fileID: 1929430718}
-  m_PathPosition: 1.210526
+  m_PathPosition: 0.08484636
   m_PositionUnits: 2
   m_PathOffset: {x: 0, y: 1.67, z: 0}
   m_XDamping: 0
@@ -21482,7 +21482,7 @@ PrefabInstance:
     - target: {fileID: 691598415596356677, guid: 9c45bd694eb4b7e438ba18699e9c684b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -570.7501
+      value: -570.7502
       objectReference: {fileID: 0}
     - target: {fileID: 691598415596356677, guid: 9c45bd694eb4b7e438ba18699e9c684b,
         type: 3}
@@ -21492,7 +21492,7 @@ PrefabInstance:
     - target: {fileID: 691598415596356677, guid: 9c45bd694eb4b7e438ba18699e9c684b,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.00011488545
+      value: 0.000007451711
       objectReference: {fileID: 0}
     - target: {fileID: 598401962099919082, guid: 9c45bd694eb4b7e438ba18699e9c684b,
         type: 3}

@@ -5,13 +5,12 @@ using RPG.Attributes;
 using RPG.Core;
 using RPG.Movement;
 using RPG.Stats;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace RPG.Combat
 {
 
-    public class Fighter : MonoBehaviour, IAction, ISaveable, IModifierProvider
+    public class Fighter : MonoBehaviour, IAction, ISaveable
     {
         WeaponConfig currentWeaponConfig;
         LazyValue<Weapon> currentWeapon;
@@ -182,22 +181,6 @@ namespace RPG.Combat
         public void RestoreState(object state)
         {
             EquipWeapon(UnityEngine.Resources.Load<WeaponConfig>((string)state));
-        }
-
-        public IEnumerable<float> GetAdditiveModifiers(Stat stat)
-        {
-            if (stat == Stat.Damage)
-            {
-                yield return currentWeaponConfig.GetDamage();
-            }
-        }
-
-        public IEnumerable<float> GetPercentageModifiers(Stat stat)
-        {
-            if (stat == Stat.Damage)
-            {
-                yield return currentWeaponConfig.GetPercentageBonus();
-            }
         }
     }
 }

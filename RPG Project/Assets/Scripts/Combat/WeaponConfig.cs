@@ -1,12 +1,14 @@
 ﻿using GameDevTV.Inventories;
 using RPG.Attributes;
+using RPG.Stats;
+using System.Collections.Generic;
 using UnityEngine;
 
 
 namespace RPG.Combat
 {
     [CreateAssetMenu(fileName = "Weapon", menuName = "Weapons/Make New Weapon", order = 0)]
-    public class WeaponConfig : EquipableItem
+    public class WeaponConfig : EquipableItem, IModifierProvider
     {
         [SerializeField] private AnimatorOverrideController animatorOverride = null;
         [SerializeField] private Weapon equippedPrefab = null;
@@ -101,6 +103,22 @@ namespace RPG.Combat
             CapsuleCollider targetCapsule = target.GetComponent<CapsuleCollider>();
             if (!targetCapsule) { return target.transform.position; }
             return target.transform.position + (Vector3.up * targetCapsule.height / 2);
+        }
+
+        public IEnumerable<float> GetAdditiveModifiers(Stat stat)
+        {
+            if (stat == Stat.Damage)
+            {
+                yield return weaponDamage;
+            }
+        }
+
+        public IEnumerable<float> GetPercentageModifiers(Stat stat)
+        {
+            if (stat == Stat.Damage)
+            {
+                yield return percentageBonus;
+            }
         }
     }
 }
